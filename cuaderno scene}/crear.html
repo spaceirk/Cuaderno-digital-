@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Apuntes - Zim & GIR Notebook</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="blood-drip-bar"></div>
+
+    <div class="main-container">
+        <!-- Banner Superior -->
+        <header class="myspace-header">
+            <div class="top-nav">
+                <a href="index.html">Inicio (Zim Core)</a>
+                <a href="apuntes.html">Apuntes de Clases</a>
+                <a href="crear.html" class="active">Crear Apuntes</a>
+                <a href="empresa.html">Avance de Empresa</a>
+            </div>
+            <div class="banner-content">
+                <h1>CREAR NUEVOS APUNTES RAPIDOS</h1>
+                <p>"¡REGISTRA TUS NUEVAS IDEAS!"</p>
+            </div>
+        </header>
+
+        <!-- Galería de Accesos Directos con GIFs -->
+        <section class="box-card">
+            <h3 class="gir-title"> Accesos Directos </h3>
+            <div class="media-grid">
+                <a href="index.html" class="media-item circle-frame interactive-link">
+                    <img src="hornet.gif" alt="Inicio">
+                    <span> INICIO</span>
+                </a>
+                <a href="apuntes.html" class="media-item square-frame interactive-link">
+                    <img src="jotaro.gif" alt="Apuntes">
+                    <span>TEMAS</span>
+                </a>
+                <a href="crear.html" class="media-item circle-frame interactive-link">
+                    <img src="sonic.gif" alt="Crear">
+                    <span> CREAR NOTA</span>a</span>
+                </a>
+                <a href="empresa.html" class="media-item square-frame interactive-link">
+                    <img src="gatomeme.gif" alt="Empresa">
+                    <span>DESARROLLO DE EMORESA</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Formulario para agregar notas -->
+        <div class="box-card">
+            <h3> Registrar nuevo apunte rapido </h3>
+            <form id="form-nuevo-apunte" onsubmit="agregarNuevoApunte(event)">
+                <div style="margin-bottom: 12px;">
+                    <label style="color: #39ff14; display: block; margin-bottom: 4px;">Título del Apunte:</label>
+                    <input type="text" id="nuevo-titulo" required placeholder="" style="width: 100%; padding: 8px; background: #000; color: #39ff14; border: 2px solid #ff007f; font-family: 'VT323'; font-size: 20px; box-sizing: border-box;">
+                </div>
+                <div style="margin-bottom: 12px;">
+                    <label style="color: #39ff14; display: block; margin-bottom: 4px;">Categoría:</label>
+                    <input type="text" id="nuevo-categoria" required placeholder=""" style="width: 100%; padding: 8px; background: #000; color: #39ff14; border: 2px solid #ff007f; font-family: 'VT323'; font-size: 20px; box-sizing: border-box;">
+                </div>
+                <div style="margin-bottom: 12px;">
+                    <label style="color: #39ff14; display: block; margin-bottom: 4px;">Contenido del Apunte:</label>
+                    <textarea id="nuevo-contenido" required class="note-textarea" style="height: 180px; background: #000; color: #39ff14; padding: 10px; border: 2px solid #39ff14; box-sizing: border-box;" placeholder="Escribe el contenido de tu nota aquí..."></textarea>
+                </div>
+                <button type="submit" class="scene-btn">💾 Guardar Nota en el Sistema</button>
+            </form>
+        </div>
+
+        <!-- Contenedor de notas guardadas -->
+        <div class="box-card">
+            <h3>Mis apuntes guardadas</h3>
+            <div id="lista-notas-creadas"></div>
+        </div>
+    </div>
+
+    <script>
+        function cargarNotasCreadas() {
+            const contenedor = document.getElementById('lista-notas-creadas');
+            const notas = JSON.parse(localStorage.getItem('mis_notas_personalizadas') || '[]');
+            
+            if (notas.length === 0) {
+                contenedor.innerHTML = '<p style="color: #ff007f;">Aún no has creado notas personalizadas en esta sección.</p>';
+                return;
+            }
+
+            let html = '';
+            notas.forEach((nota, index) => {
+                html += `<div style="background: #110011; border: 1px dashed #39ff14; padding: 12px; margin-bottom: 12px;">
+                    <h4 style="color: #39ff14; margin: 0 0 5px 0; font-size: 22px;">${nota.titulo} <span style="color:#ff007f; font-size:16px;">[${nota.categoria}]</span></h4>
+                    <p style="white-space: pre-wrap; margin: 0; color: #00ff66;">${nota.contenido}</p>
+                    <button class="scene-btn" style="margin-top: 10px; font-size: 14px; padding: 3px 8px;" onclick="eliminarNota(${index})">🗑️ Eliminar Nota</button>
+                </div>`;
+            });
+            contenedor.innerHTML = html;
+        }
+
+        function agregarNuevoApunte(e) {
+            e.preventDefault();
+            const titulo = document.getElementById('nuevo-titulo').value;
+            const categoria = document.getElementById('nuevo-categoria').value;
+            const contenido = document.getElementById('nuevo-contenido').value;
+
+            const notas = JSON.parse(localStorage.getItem('mis_notas_personalizadas') || '[]');
+            notas.push({ titulo, categoria, contenido });
+            localStorage.setItem('mis_notas_personalizadas', JSON.stringify(notas));
+
+            document.getElementById('form-nuevo-apunte').reset();
+            cargarNotasCreadas();
+            alert("¡Apunte guardado exitosamente!");
+        }
+
+        function eliminarNota(index) {
+            const notas = JSON.parse(localStorage.getItem('mis_notas_personalizadas') || '[]');
+            notas.splice(index, 1);
+            localStorage.setItem('mis_notas_personalizadas', JSON.stringify(notas));
+            cargarNotasCreadas();
+        }
+
+        window.onload = cargarNotasCreadas;
+    </script>
+</body>
+</html>

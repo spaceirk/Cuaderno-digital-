@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avance de Empresa - Zim & GIR Notebook</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="blood-drip-bar"></div>
+
+    <div class="main-container">
+        <!-- Banner Superior -->
+        <header class="myspace-header">
+            <div class="top-nav">
+                <a href="index.html">Inicio</a>
+                <a href="apuntes.html">Apuntes de Clases</a>
+                <a href="crear.html">Crear Apuntes</a>
+                <a href="empresa.html" class="active">Avance de Empresa</a>
+            </div>
+            <div class="banner-content">
+                <h1>AVANCE EMPRESA BOA</h1>
+                <p>"PROYECTO DE EMPRESA BOA"</p>
+            </div>
+        </header>
+
+      
+        <section class="box-card">
+            <h3 class="gir-title"> Accesos Directos </h3>
+            <div class="media-grid">
+                <a href="index.html" class="media-item circle-frame interactive-link">
+                    <img src="pony.gif" alt="Inicio">
+                    <span>INICIO</span>
+                </a>
+                <a href="apuntes.html" class="media-item square-frame interactive-link">
+                    <img src="jotaro.gif" alt="Apuntes">
+                    <span>TEMAS</span>
+                </a>
+                <a href="crear.html" class="media-item circle-frame interactive-link">
+                    <img src="gatomeme.gif" alt="Crear">
+                    <span>CREAR APUNTE</span>
+                </a>
+                <a href="empresa.html" class="media-item square-frame interactive-link">
+                    <img src="sonic.gif" alt="Empresa">
+                    <span>EMPRESA</span>
+                </a>
+            </div>
+        </section>
+
+       
+        <div class="box-card">
+            <h3>Fases del Proyecto Empresarial</h3>
+            <ul class="retro-links">
+                <li>𖹭 <strong>Fase 1:</strong> Diagnóstico de la Empresa y Misión (Completado)</li>
+                <li>𖹭 <strong>Fase 2:</strong> Análisis de Mercado y Competidores (En Proceso)</li>
+                <li>𖹭 <strong>Fase 3:</strong> Plan Operativo y Propuesta de Valor (Pendiente)</li>
+                <li>𖹭 <strong>Fase 4:</strong> Presentación y Evaluación Final (Pendiente)</li>
+            </ul>
+        </div>
+
+       
+        <div class="box-card">
+            <h3> Bitácora de Avance y Notas de la Empresa</h3>
+            <p style="color: #ff007f;">Registra las actualizaciones, acuerdos o tareas pendientes de tu empresa:</p>
+            <textarea id="empresa-texto" class="note-textarea" style="height: 280px; background: #000; border: 2px solid #39ff14; padding: 12px; box-sizing: border-box;" placeholder="Escribe los avances de la empresa aquí..."></textarea>
+            <div style="margin-top: 15px; display: flex; align-items: center; gap: 15px;">
+                <button class="scene-btn" onclick="guardarEmpresa()">💾 Guardar Bitácora</button>
+                <span id="mensaje-empresa" class="save-alert"></span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const savedEmpresa = localStorage.getItem('avance_empresa_proyecto');
+            if (savedEmpresa) {
+                document.getElementById('empresa-texto').value = savedEmpresa;
+            }
+        }
+
+        function guardarEmpresa() {
+            const texto = document.getElementById('empresa-texto').value;
+            localStorage.setItem('avance_empresa_proyecto', texto);
+            const msg = document.getElementById('mensaje-empresa');
+            msg.innerText = "¡Avance de la empresa guardado con éxito!";
+            setTimeout(() => { msg.innerText = ''; }, 3000);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apuntes de Clases - Nyan Cat & Zim Notebook</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <style>
+        
+        .nyan-banner-container {
+            width: 100%;
+            height: 110px;
+            overflow: hidden;
+            border: 3px solid #ff007f;
+            border-radius: 8px;
+            box-shadow: 0 0 15px #39ff14;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+
+        .nyan-banner-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: contrast(110%) brightness(105%);
+        }
+
+       
+        .contenido-apunte {
+            font-family: 'VT323', monospace;
+            font-size: 20px;
+            color: #39ff14;
+            line-height: 1.5;
+            background: #111;
+            padding: 20px;
+            border: 1px dashed #ff007f;
+            border-radius: 5px;
+            min-height: 180px;
+            box-sizing: border-box;
+        }
+
+        .contenido-apunte h4 {
+            color: #ff007f;
+            font-family: 'Press Start 2P';
+            font-size: 12px;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="blood-drip-bar"></div>
+
+    <div class="main-container">
+        <!-- Banner Superior -->
+        <header class="myspace-header">
+            <div class="top-nav">
+                <a href="index.html">Inicio</a>
+                <a href="apuntes.html" class="active">Apuntes de Clases</a>
+                <a href="crear.html">Crear Apuntes</a>
+                <a href="empresa.html">Avance de Empresa</a>
+            </div>
+            <div class="banner-content">
+                <h1>apuntes de clase</h1>
+                <p>Selecciona un tema para estudiar:</p>
+            </div>
+        </header>
+
+        
+        <section class="box-card" style="padding: 10px; margin-bottom: 20px;">
+            <h3 class="gir-title"></h3>
+            <div class="nyan-banner-container">
+                <img src="nya.gif" alt="Nyan Cat Running Space GIF">
+            </div>
+        </section>
+
+       
+        <div class="box-card">
+            <h3>Temas de Clase (Haz clic para cambiar de tema)</h3>
+            <div class="top-nav" style="background:#000; border:1px solid #39ff14; display:flex; flex-wrap:wrap; gap:5px; padding:10px;">
+                <a href="#" onclick="cargarTema(1); return false;" id="tab1" class="active">Tema 1: primera clase, introduccion</a>
+                <a href="#" onclick="cargarTema(2); return false;" id="tab2">Tema 2: sostenibilidad en bolivia</a>
+                <a href="#" onclick="cargarTema(3); return false;" id="tab3">Tema 3: las ODS</a>
+                <a href="#" onclick="cargarTema(4); return false;" id="tab4">Tema 4: RSC</a>
+                <a href="#" onclick="cargarTema(5); return false;" id="tab5">Tema 5: integracion de principios eticos</a>
+                <a href="#" onclick="cargarTema(6); return false;" id="tab6">Tema 6: sostenibilidad y sustetabilidad</a>
+            </div>
+        </div>
+
+
+        <div class="notebook-page">
+            <h2 id="titulo-tema" style="font-family:'Press Start 2P'; font-size:14px; color:#ff007f; margin-top:0;">Tema 1: primera clase, introducción</h2>
+            <div id="texto-apunte" class="contenido-apunte">
+                <!-- El contenido se cargará dinámicamente aquí -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let temaActual = 1;
+
+       
+        const apuntesTemas = [
+            
+            `<h4>Resumen de la Clase:</h4>
+             <p><strong>1. Introducción general:</strong> en la materia podemos ver que una empresa no solamente tiene que generar dinero, puede sostenerse a si misma haciendo uhn bien comunitario a la vex siendo etica y eficiente, y que en la mayoria de empresas se ven muchas faltas eticas y de transparencia por no decir la mayotia .</p>
+             <p><strong>2. etica interna o social?:</strong> la etica es algo que deberiamos tener internamente, desde hace mucho se implicaron normas o normativas que la mayoria de gente sifgue, hay reglas sociales como las de codigos o las que se siguen por mayoria, las reglas familiares, reglas inancieras, morales como las de no robar o no hacer algo que vaya en contra de las reglas o normas de la sociedad.</p>
+             <p><strong>3. falta de transparencia:</strong> casos en los que prometen cosas pero no las cumplen, o prometen transparencia pero no, lo usan a su modo para consegir ciertas cosas .</p>`,
+             
+             
+             
+            
+            `<h4>Resumen de la Clase:</h4>
+             <p><strong>1. el desarrollo sostenibke en bolivia:</strong> es el como cuidamos todo lo que puede servirnos a un futuro , como recursos naturales pensando en las generaciones futuras .</p>
+             <p><strong>2. Desafíos ambientales:</strong> Deforestación, gestión del agua, transición energética y conservación de reservas naturalespero se peude hacer movimientos para aprovechar al maximo los recursos .</p>
+             <p><strong>3. Certificado de cuidado ambiental:</strong> Cómo la sostenibilidad en Bolivia debe integrar a las comunidades originarias y el respeto por la naturaleza, alfunas empresas tienen un certificado de cuidado al medio ambiente .</p>`,
+            
+             
+             
+            
+            `<h4>Resumen de la Clase:</h4>
+             <p><strong>1. ¿Qué son las ODS?:</strong> Los Objetivos de Desarrollo Sostenible son un llamado universal adoptado por las Naciones Unidas para poner fin a la pobreza, proteger el planeta y garantizar la pazal menos hasta el 2030 para las generaciones futuras y asi tomando en cuenta lo ambiental, social, economico y demas para todas las demas personas, equidad y reduccioin de desigualdades, al igual que las ods no son negociables porque cada empresa debe medir las consecuencias de sus actos  .</p>
+             <p><strong>2. Metas globales clave:</strong> Fin de la pobreza (ODS 1), Educación de calidad (ODS 4), Acción por el clima (ODS 13) y Alianzas para lograr los objetivos (ODS 17).</p>
+             <p><strong>3. Aplicación práctica :</strong> Cómo las organizaciones e iniciativas locales pueden contribuir al cumplimiento de la Agenda 2030 como algunas empresas de aqui en bolivia en general al igual tomar en cuenta que para que pueda ser sostenible debe tener los 3 pilares de sostenibilidad social, sostenibilidad economica y ambiental .</p>`,
+
+            
+            `<h4>Resumen de la Clase:</h4>
+             <p><strong>1. Definición:</strong> La Responsabilidad Social Corporativa es la contribución activa y voluntaria de las empresas al mejoramiento social, económico y ambiental, esta relacionada a las ods tambien esta Interna gestión de recursos humanos, seguridad laboral y Externa relación con la comunidad local, proveedores y medio ambiente</p>
+             <p><strong>2. impacto ambiental,etico y de derechos humanos:</strong> <p>se cuida lo de ambito ambiental, el cuidado del medio ambiente y la reutilizacion de algunos productos , con la transparencia hacemos una comunidad mas unida y mas sincera respetando a las personas q proveen tanto como a los consumidores de ciertas cosas o empresas siguiendo todas las leyes normativas y haciendo lo correcto   .</p>
+             <p><strong>3. DEsarrolllo del talento humano:</strong> Mejora de la reputación corporativa, fidelización de clientes y creación de valor compartido a largo plazo dando un lugar seguro de trabajo trato justo y un  buen bono economicoasi con capacitaciones que sean de forma comoda apoyando al talento humano.</p>`,
+
+            
+            `<h4>Resumen de la Clase:</h4>
+             <p><strong>1. Ética en la toma de decisiones:</strong> La integración de valores morales y principios rectores en la estrategia empresarial y profesional son importantes para asi evitar falsas promesas y descuidos a largo plazp.</p>
+             <p><strong>2. los pilares de la sostenibilidad etica :</strong> Herramientas institucionales para prevenir la corrupción, el conflicto de intereses y garantizar la transparencia como dije en el anyerior punto siendo los pilaresel ambiental, socialtratar bien a los trabajadores y apoyando al talento humano, economico ganando dinero de forma sana y duradera .</p>
+             <p><strong>3. greenwashing:</strong> es el como algunas personas o empresas dicen algo pero hacen lo contrario, hacen ver que van a apoyar a algo bueno hacia la cpmunidad pero es mentira ya que hasta  avces hacen mas daño a lo ambiental o cualquiera de los pilares mencionados   </p>`,
+
+            
+            `<h4>Resumen de la Clase:</h4>
+             <p><strong>1. sostenibilidad y sustentabilidad:</strong> Aunque a menudo se usan como sinónimos, existen matices importantes entre ambos términos en la sostenibilidad es el poder mantenerse enconomicamentey poder cubirr las necesidades, minetras que la sustentabilidad es lo que usamos para poder tener la sostenibiliad , o sea los recursos .</p>
+             <p><strong>2. recursos naturales:</strong> la sustentabilidad es muy importante porque son los recurso que vamos a usar para poder sostener algo, es algo crucial   .</p>
+             <p><strong>3. desarrollo constantesostenible :</strong> tiene q satisfacer las necesidades actuales sin destruir los recursos naturales que las gemeraciones futuras van a necesitar, por eso debemos cuidar el medio ambiente y a la vezz mejorar la tecnologia   </p>`
+        ];
+
+        const nombresTemas = [
+            "Tema 1: primera clase, introduccion",
+            "Tema 2: sostenibilidad en bolivia",
+            "Tema 3: las ODS",
+            "Tema 4: Responsabilidad Social Corporativa (RSC)",
+            "Tema 5: integracion de principios eticos",
+            "Tema 6: sostenibilidad y sustentabilidad"
+        ];
+
+        function cargarTema(num) {
+            temaActual = num;
+            document.querySelectorAll('.top-nav a[id^="tab"]').forEach(el => el.classList.remove('active'));
+            document.getElementById('tab' + num).classList.add('active');
+            
+           
+            document.getElementById('titulo-tema').innerText = nombresTemas[num-1];
+            document.getElementById('texto-apunte').innerHTML = apuntesTemas[num-1];
+        }
+
+        window.onload = function() {
+            cargarTema(1);
+        };
+    </script>
+</body>
+</html>
